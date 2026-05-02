@@ -68,7 +68,7 @@ int main(int argc, char** argv) {
         if (rank == ROOT)
             std::cout << "\t[res = " << std::fixed << std::setprecision(PRECISION)
                       << res << " | error = " << std::fixed
-                      << std::setprecision(PRECISION) << abs(res - ANS)
+                      << std::setprecision(PRECISION) << fabs(res - ANS)
                       << ']' << std::endl
                       << "--------------------------------------------------"
                       << std::endl;
@@ -76,7 +76,7 @@ int main(int argc, char** argv) {
 
         n_local *= 2;
         ++k;
-    } while (abs(res - ANS) > EPS and k < MAX_ITERATIONS);
+    } while (fabs(res - ANS) > EPS and k < MAX_ITERATIONS);
 
     t_finish = MPI_Wtime();
     dt = t_finish - t_start;
